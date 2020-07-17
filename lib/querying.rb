@@ -31,7 +31,12 @@ end
 
 def select_series_title_with_most_human_characters
   "
-  SELECT series.title 
+  SELECT series.title
+  JOIN authors 
+  ON authors.id = series.author_id
+  JOIN characters
+  ON characters.author_id = authors.id
+  WHERE MAX(characters.species = 'human)
   "
 end
 
